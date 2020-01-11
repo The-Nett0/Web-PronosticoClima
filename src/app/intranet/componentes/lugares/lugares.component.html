@@ -1,0 +1,69 @@
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <!-- <form (ngSubmit)="buscarLugar($event,inputBusqueda.value)"> -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Busca un lugar del mundo" #inputBusqueda
+                    (keyup.enter)="buscarCiudad(inputBusqueda.value)">
+            </mat-form-field>
+            <!-- </form> -->
+        </div>
+    </div>
+
+    <!-- div de espera de busqueda  -->
+
+
+<div class="row">
+    <div class="col-12 "  >
+
+            <table  mat-table [dataSource]="ciudades" class="mat-elevation-z8 container-fluid">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+                <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let ciudades"> {{ciudades.name}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="c">
+                <th mat-header-cell *matHeaderCellDef> Pais </th>
+                <td mat-cell *matCellDef="let ciudades"> {{ciudades.c}} </td>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="tipo">
+                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                <td mat-cell *matCellDef="let ciudades"> {{ciudades.type}} </td>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="latitud">
+                <th mat-header-cell *matHeaderCellDef> latitudd </th>
+                <td mat-cell *matCellDef="let ciudades"> {{ciudades.lat}} </td>
+                </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="longitudine">
+                <th mat-header-cell *matHeaderCellDef> Longitud </th>
+                <td mat-cell *matCellDef="let ciudades"> {{ciudades.lon}} </td>
+              </ng-container>
+
+               <!-- Symbol Column -->
+    
+          
+          
+      
+        <tr mat-header-row *matHeaderRowDef="['name','c','tipo','latitud','longitudine']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['name','c','tipo','latitud','longitudine']; " (click)="abrirDialogo(row)"  ></tr>
+      </table>
+    </div>
+
+      
+      
+</div>
+
+</div>

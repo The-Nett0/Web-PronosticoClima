@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <button mat-button (click)="emitir()">
+        abrir o cerrar el menu
+    </button>
+    <div class="align-content-end">
+        <i class="fa fa-check-circle" aria-hidden="true" *ngIf="enlinea"></i>
+        <i class="fa fa-chain-broken" aria-hidden="true" *ngIf="!enlinea"></i>
+    </div>
+</mat-toolbar>
