@@ -53,12 +53,23 @@
               </ng-container>
 
                <!-- Symbol Column -->
+               <!-- <ng-container matColumnDef="clima">
+                <th mat-header-cell *matHeaderCellDef> Clima </th>
+                <button mat-raised-button color="accent">Accent</button>
+              </ng-container> -->
+
+              <ng-container matColumnDef="clima">
+                <th mat-header-cell *matHeaderCellDef> Clima </th>
+                <td mat-cell *matCellDef="let ciudades"> 
+                    <button mat-raised-button color="warn"  (click)="verClima( ciudades )" >Warn</button>
+                </td>
+              </ng-container>
     
           
           
       
-        <tr mat-header-row *matHeaderRowDef="['name','c','tipo','latitud','longitudine']"></tr>
-        <tr mat-row *matRowDef="let row; columns: ['name','c','tipo','latitud','longitudine']; " (click)="abrirDialogo(row)"  ></tr>
+        <tr mat-header-row *matHeaderRowDef="['name','c','tipo','latitud','longitudine','clima']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['name','c','tipo','latitud','longitudine','clima']; "   ></tr>
       </table>
     </div>
 
@@ -67,3 +78,5 @@
 </div>
 
 </div>
+
+<!-- https://www.freakyjolly.com/angular-7-8-edit-add-delete-rows-in-material-table-with-using-dialogs-inline-row-operation/ (para botones en tabla) -->

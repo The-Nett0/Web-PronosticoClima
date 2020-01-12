@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MapaComponent } from '../mapa/mapa.component'
+import { Router } from '@angular/router';
 
 
 
@@ -31,18 +32,19 @@ export class LugaresComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   
-  constructor(private _slugares:ServicesService,public dialog:MatDialog  ) { }
+  constructor(private _slugares:ServicesService,public dialog:MatDialog,
+    private _sRputer:Router ) { }
 
   ngOnInit() {
   }
 
   buscarCiudad(busqueda: string){
-   // console.log('hiciste enter');
+  
     
     this._slugares.obtenerCiudad(busqueda).subscribe((rpta)=>{
       
       this.ciudades = rpta.Results;
-      //console.log(this.ciudades);
+      
     })
   }
 
@@ -50,6 +52,17 @@ export class LugaresComponent implements OnInit {
     const dialoRef = this.dialog.open(MapaComponent ,{
       data:lugar
     } )
+  }
+
+  verClima( datos:datosCiudades ){
+
+    let lat = datos.lat;
+    let lon = datos.lon;
+
+    this._slugares.obtenerClima(lat,lon).subscribe( (rpta)=>{
+      console.log(rpta);
+      
+    })
   }
 
 }
